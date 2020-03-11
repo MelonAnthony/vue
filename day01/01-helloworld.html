@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<div>{{msg}}</div>
+		<div>{{1+2}}</div>
+		<div>{{msg + '----'+msg2}}</div>
+	</div>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript">
+		/*
+			Vue.js会将页面的信息进行编译。从而显示出数据
+		*/
+		var vm  = new Vue({
+			el:'#app',  //挂在的位置
+			data:{      //模型数据(值是一个对象)
+				msg:'hello Vue',
+				msg2:'world'
+			}
+		});
+	</script>
+</body>
+</html>

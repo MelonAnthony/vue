@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li :key='index' v-for='(item,index) in list'>{{item}}</li>
+		</ul>
+		<div>
+			<div>{{info.name}}</div>
+			<div>{{info.age}}</div>
+			<div>{{info.gender}}</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript">
+		/*
+			动态处理响应式数据
+			Vue.set(vm.items,indexOfItem,newValue);
+			vm.$set(vm.items,indexOfItem,newValue);
+			参数1表示要处理的数组名称
+			参数2表示要处理的数组的索引
+			参数3表示要处理的数组的值
+		*/
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'hello vue',
+				list:['apple','orange','banana'],
+				info:{
+					name:'lisi',
+					age:12
+				}
+			},
+			methods:{
+ 
+			}
+		});
+
+		//vm.lsit[2] = 'lemon';
+		Vue.set(vm.list,2,'lemon');
+		vm.$set(vm.list,1,'lemon');
+
+		//vm.info.gender = 'male';
+		vm.$set(vm.info,'gender','female');
+	</script>
+</body>
+</html>

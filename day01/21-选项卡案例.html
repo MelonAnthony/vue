@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.Active{
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div>
+			<span v-bind:key='item.id' :class="{Active:item.id == choose}" v-on:click='handle(item)' v-for='item in myFruits'>
+				{{item.name}}
+			</span>
+		</div>
+		<img v-bind:src="destimg">
+	</div>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				myFruits:[{
+				  id:1,
+				  name:'苹果',
+				  img:'img/apple.png'
+				},{
+				  id:2,
+				  name:'橘子',
+				  img:'img/orange.png'
+				},{
+				  id:3,
+				  name:'柠檬',
+				  img:'img/lemon.png'
+				}],
+				destimg:'img/apple.png',
+				isActive:true,
+				choose:1,
+			},
+			methods:{	
+				handle:function(item){
+					//在这里实现选项卡的切换:本质就是操作类名
+					this.destimg = item.img;
+					this.choose = item.id;
+				}
+			}
+		});
+	</script>
+</body>
+</html>
