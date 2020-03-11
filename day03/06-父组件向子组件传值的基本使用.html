@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<div>{{pmsg}}</div>
+		<menu-item title='写死的值'></menu-item>
+		<menu-item :title='pmsg'></menu-item>
+	</div>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript">
+		/*父组件向子组件传值*/
+		Vue.component('menu-item',{
+			props:['title'],
+			data(){
+				return {
+					msg:'子组件hello'
+				}
+			},
+			template:`
+				<div>
+					<div>{{msg+"------"+title}}</div>
+				</div>
+			`
+		})
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				pmsg:'父组件hello vue'
+			},
+			methods:{
+
+			}
+		});
+	</script>
+</body>
+</html>
