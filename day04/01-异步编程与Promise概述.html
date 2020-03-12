@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		前后端交互
+	</div>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript">
+		/*
+			前后端交互-异步编程与Promise概述
+			promise是异步编程的一种解决方案，从语法上讲，Promise是一个对象，从它可以获取异步操作的消息
+			使用promise主要有以下好处：
+			可以避免多层异步调用嵌套的问题
+			Promise对象提供了简洁的API，使得控制异步操作更加容易
+		*/
+		//如果要保证打印顺序必须进行嵌套
+		$.ajax({
+		      url: 'http://localhost:3000/data',
+		      success: function(data) {
+		        console.log(data)
+		        $.ajax({
+		          url: 'http://localhost:3000/data1',
+		          success: function(data) {
+		            console.log(data)
+		            $.ajax({
+		              url: 'http://localhost:3000/data2',
+		              success: function(data) {
+		                console.log(data)
+		              }
+		            });
+		          }
+		        });
+		      }
+		    });
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				msg:'hello vue'
+			},
+			methods:{
+
+			}
+		});
+	</script>
+</body>
+</html>
